@@ -8,9 +8,15 @@ Library that uses JSON Placeholder's Post API https://jsonplaceholder.typicode.c
   npm i posts-lib-poc
 ```
 
-## Examples
+## Usage
 
-Use the component as below
+Import PostsModule in app.module.ts
+
+```javascript
+import { PostsModule } from "posts-lib-poc";
+```
+
+In Markup use
 
 ```html
 <lib-posts></lib-posts>
