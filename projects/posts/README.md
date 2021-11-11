@@ -1,24 +1,17 @@
-# Posts
+# Posts lib
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+Library that uses JSON Placeholder's Post API https://jsonplaceholder.typicode.com/
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project posts` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project posts`.
-> Note: Don't forget to add `--project posts` or else it will be added to the default project in your `angular.json` file. 
+```bash
+  npm i posts-lib-poc
+```
 
-## Build
+## Examples
 
-Run `ng build posts` to build the project. The build artifacts will be stored in the `dist/` directory.
+Use the component as below
 
-## Publishing
-
-After building your library with `ng build posts`, go to the dist folder `cd dist/posts` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test posts` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```html
+<lib-posts></lib-posts>
+```
