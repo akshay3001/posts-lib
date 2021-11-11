@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Posts } from './posts.interface';
+import { Posts, PostsParams } from './posts.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,11 @@ export class PostsService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getPosts(size: number = 3): Observable<Posts[]> {
-    return this.http.get<Posts[]>(`${this.baseURL}/posts?_page=${size}`);
+  getPosts({ _page }: PostsParams): Observable<Posts[]> {
+    return this.http.get<Posts[]>(`${this.baseURL}/posts`, {
+      params: {
+        _page,
+      },
+    });
   }
 }

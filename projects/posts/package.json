@@ -1,6 +1,6 @@
 {
   "name": "posts-lib-poc",
-  "version": "1.0.3",
+  "version": "1.2.1",
   "peerDependencies": {
     "@angular/common": "^12.1.0",
     "@angular/core": "^12.1.0"

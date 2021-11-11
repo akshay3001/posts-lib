@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { PostsParams } from './posts.interface';
 import { PostsService } from './posts.service';
 
 @Component({
@@ -22,9 +23,11 @@ import { PostsService } from './posts.service';
   styles: [],
 })
 export class PostsComponent {
-  pageSize$ = new BehaviorSubject<number>(3);
-  posts$ = this.pageSize$.pipe(
-    switchMap((pageSize) => this.postsService.getPosts(pageSize))
+  params$ = new BehaviorSubject<PostsParams>({
+    _page: '3',
+  } as PostsParams);
+  posts$ = this.params$.pipe(
+    switchMap((params) => this.postsService.getPosts(params))
   );
 
   constructor(private readonly postsService: PostsService) {}
