@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { PostsParams } from './posts.interface';
 import { PostsService } from './posts.service';
 
@@ -27,6 +27,7 @@ export class PostsComponent {
     page: '3',
   });
   posts$ = this.params$.pipe(
+    tap((params) => console.log('PostsComponent :: params$ :: ', params)),
     switchMap((params) => this.postsService.getPosts(params))
   );
 

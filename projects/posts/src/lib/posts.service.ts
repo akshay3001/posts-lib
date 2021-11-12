@@ -38,6 +38,7 @@ export class PostsService {
     if (start !== undefined && start !== null) {
       params = this.addToHttpParams(params, start, '_start');
     }
+    console.log('PostsService :: HTTP Params :: ', params['updates']);
     return this.http.get<Posts[]>(`${this.basePath}/posts`, { params });
   }
 
