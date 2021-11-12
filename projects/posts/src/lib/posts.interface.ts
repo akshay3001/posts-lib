@@ -1,10 +1,10 @@
 export interface PostsParams {
-  _page: string;
-  _sort: string;
-  _order: string;
-  _start: string;
-  _end: string;
-  _q: string;
+  page?: string;
+  sort?: string;
+  order?: string;
+  start?: string;
+  end?: string;
+  q?: string;
 }
 
 export interface Posts {

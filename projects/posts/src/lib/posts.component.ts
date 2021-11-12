@@ -24,8 +24,8 @@ import { PostsService } from './posts.service';
 })
 export class PostsComponent {
   params$ = new BehaviorSubject<PostsParams>({
-    _page: '3',
-  } as PostsParams);
+    page: '3',
+  });
   posts$ = this.params$.pipe(
     switchMap((params) => this.postsService.getPosts(params))
   );
