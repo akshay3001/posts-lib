@@ -7,16 +7,38 @@ import { Posts, PostsParams } from './posts.interface';
   providedIn: 'root',
 })
 export class PostsService {
-  private readonly baseURL = 'https://jsonplaceholder.typicode.com';
+  private readonly basePath = 'https://jsonplaceholder.typicode.com';
 
   constructor(private readonly http: HttpClient) {}
 
-  getPosts({ page }: PostsParams): Observable<Posts[]> {
+  getPosts({
+    page,
+    end,
+    order,
+    q,
+    sort,
+    start,
+  }: PostsParams): Observable<Posts[]> {
     let params = new HttpParams();
     if (page !== undefined && page !== null) {
       params = this.addToHttpParams(params, page, '_page');
     }
-    return this.http.get<Posts[]>(`${this.baseURL}/posts`, { params });
+    if (end !== undefined && end !== null) {
+      params = this.addToHttpParams(params, end, '_end');
+    }
+    if (order !== undefined && order !== null) {
+      params = this.addToHttpParams(params, order, '_order');
+    }
+    if (q !== undefined && q !== null) {
+      params = this.addToHttpParams(params, q, '_q');
+    }
+    if (sort !== undefined && sort !== null) {
+      params = this.addToHttpParams(params, sort, '_sort');
+    }
+    if (start !== undefined && start !== null) {
+      params = this.addToHttpParams(params, start, '_start');
+    }
+    return this.http.get<Posts[]>(`${this.basePath}/posts`, { params });
   }
 
   private addToHttpParams(httpParams: HttpParams, value: any, key: string) {
