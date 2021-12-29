@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Posts } from 'dist/posts/lib/posts.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { PostsParams } from './posts.interface';
 import { PostsService } from './posts.service';
@@ -22,14 +23,18 @@ import { PostsService } from './posts.service';
   `,
   styles: [],
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   params$ = new BehaviorSubject<PostsParams>({
     page: '3',
   });
-  posts$ = this.params$.pipe(
-    tap((params) => console.log('PostsComponent :: params$ :: ', params)),
-    switchMap((params) => this.postsService.getPosts(params))
-  );
+  posts$!: Observable<Posts[]>;
 
   constructor(private readonly postsService: PostsService) {}
+
+  ngOnInit() {
+    this.posts$ = this.params$.pipe(
+      tap((params) => console.log('PostsComponent :: params$ :: ', params)),
+      switchMap((params) => this.postsService.getPosts(params))
+    );
+  }
 }
